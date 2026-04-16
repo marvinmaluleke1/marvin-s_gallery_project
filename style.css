@@ -1,0 +1,197 @@
+/* ---------- RESET & BASE ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(145deg, #f8fafc 0%, #eef2f5 100%);
+  font-family: system-ui, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  color: #0a2b3e;
+  padding: 2rem 1.5rem;
+}
+
+.gallery-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(0px);
+  border-radius: 2rem;
+  padding: 2rem 1.8rem;
+  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- HEADER STYLES ---------- */
+.gallery-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid #e9edf2;
+  padding-bottom: 1.5rem;
+}
+
+.gallery-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #1f4a6e, #2b6c8f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.gallery-header p {
+  font-size: 1.1rem;
+  color: #2c5368;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.accessibility-badge {
+  display: inline-block;
+  background: #e1ecf4;
+  border-radius: 40px;
+  padding: 0.3rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #155f7c;
+  margin-top: 0.75rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 2px 5px rgba(0,0,0,0.02);
+}
+
+/* ---------- RESPONSIVE GRID LAYOUT ---------- */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.8rem;
+  margin: 1.5rem 0 1rem;
+}
+
+/* ---------- PHOTO CARD ---------- */
+.photo-card {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* focus state for keyboard navigation */
+.photo-card:focus-within {
+  outline: 3px solid #2b6c8f;
+  outline-offset: 4px;
+  border-radius: 1.25rem;
+}
+
+/* image frame & aspect */
+.image-frame {
+  width: 100%;
+  background-color: #eef2f5;
+  overflow: hidden;
+}
+
+.image-frame img {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.photo-card:hover .image-frame img {
+  transform: scale(1.02);
+}
+
+/* figcaption styling (never replaces alt) */
+.photo-caption {
+  padding: 1rem 1rem 1.1rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #2c4c6c;
+  background: #ffffff;
+  border-top: 1px solid #eff3f8;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- FOOTER ---------- */
+.gallery-footer {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #4a627a;
+  border-top: 1px solid #e9edf2;
+  padding-top: 1.8rem;
+}
+
+.gallery-footer p {
+  margin: 0.3rem 0;
+}
+
+/* ---------- RESPONSIVE ADJUSTMENTS ---------- */
+@media (max-width: 720px) {
+  body {
+    padding: 1rem;
+  }
+  .gallery-container {
+    padding: 1.2rem;
+  }
+  .gallery-header h1 {
+    font-size: 2rem;
+  }
+  .image-frame img {
+    height: 220px;
+  }
+  .photo-grid {
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-header h1 {
+    font-size: 1.7rem;
+  }
+  .image-frame img {
+    height: 200px;
+  }
+  .photo-caption {
+    font-size: 0.85rem;
+    padding: 0.7rem;
+  }
+}
+
+/* ---------- ACCESSIBILITY & REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .photo-card,
+  .image-frame img {
+    transition: none;
+  }
+  .photo-card:hover {
+    transform: none;
+  }
+  .photo-card:hover .image-frame img {
+    transform: none;
+  }
+}
+
+/* visually hidden utility for screen readers if needed */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
